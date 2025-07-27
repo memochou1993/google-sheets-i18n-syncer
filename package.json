@@ -1,0 +1,42 @@
+{
+  "name": "google-sheets-i18n-syncer",
+  "version": "1.0.0",
+  "description": "A CLI tool to fetch and sync translations from Google Sheets",
+  "main": "lib/index.js",
+  "type": "module",
+  "bin": {
+    "i18n-syncer": "./bin/i18n-syncer.js"
+  },
+  "files": [
+    "bin/",
+    "lib/"
+  ],
+  "scripts": {
+    "cli": "node bin/i18n-syncer.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "keywords": [
+    "i18n",
+    "localization",
+    "google-sheets",
+    "cli",
+    "translation"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^14.0.0",
+    "googleapis": "^154.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.32.0",
+    "eslint": "^9.32.0",
+    "eslint-plugin-import": "^2.32.0",
+    "globals": "^16.3.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
