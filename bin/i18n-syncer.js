@@ -30,13 +30,21 @@ const createSyncer = (options) => {
 const handleError = (error) => {
   if (error.code === 'ENOENT' && error.path?.includes('credentials.json')) {
     console.error('Error: Credentials file not found. Please provide a valid path to your Google API credentials.');
-  } else if (error.message?.includes('invalid_grant') || error.message?.includes('authorization')) {
-    console.error('Error: Google API authorization failed. Please check your credentials and permissions.');
-  } else if (error.response?.status === 404) {
-    console.error('Error: Spreadsheet not found. Please check your spreadsheet ID.');
-  } else {
-    console.error('Error:', error.message);
+    process.exit(1);
   }
+
+  if (error.message?.includes('invalid_grant') || error.message?.includes('authorization')) {
+    console.error('Error: Google API authorization failed. Please check your credentials and permissions.');
+    process.exit(1);
+  }
+
+  if (error.response?.status === 404) {
+    console.error('Error: Spreadsheet not found. Please check your spreadsheet ID.');
+    process.exit(1);
+  }
+
+  // Default case
+  console.error('Error:', error.message);
   process.exit(1);
 };
 
@@ -48,6 +56,7 @@ program
   .option('-n, --sheet-name <name>', 'Name of the sheet to pull data from')
   .option('-c, --credentials <path>', 'Path to credentials file', './credentials.json')
   .option('-t, --translation-dir <directory>', 'Directory for translation JSON files', './translations')
+  .option('-f, --format <format>', 'Format of translation files (json or js)', 'json')
   .action(async (options) => {
     try {
       console.log('Starting translation pull from Google Sheets...');
@@ -57,6 +66,7 @@ program
       await syncer.pull({
         sheetName: options.sheetName,
         translationDir: options.translationDir,
+        format: options.format,
       });
 
     } catch (error) {
@@ -72,6 +82,7 @@ program
   .option('-n, --sheet-name <name>', 'Name of the sheet to push data to')
   .option('-c, --credentials <path>', 'Path to credentials file', './credentials.json')
   .option('-t, --translation-dir <directory>', 'Directory for translation JSON files', './translations')
+  .option('-f, --format <format>', 'Format of translation files to read (json or js)', 'json')
   .action(async (options) => {
     try {
       console.log('Starting translation push to Google Sheets...');
@@ -81,6 +92,7 @@ program
       await syncer.push({
         sheetName: options.sheetName,
         translationDir: options.translationDir,
+        format: options.format,
       });
 
     } catch (error) {
