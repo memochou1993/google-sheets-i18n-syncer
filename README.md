@@ -99,7 +99,7 @@ import { I18nSyncer } from 'google-sheets-i18n-syncer';
 const syncer = new I18nSyncer({
   spreadsheetId: 'YOUR_SPREADSHEET_ID',
   credentialsPath: './credentials.json',
-  translationDir: './translations'
+  translationDir: './translations',
 });
 
 // Pull data from Google Sheets to language files
@@ -108,12 +108,12 @@ await syncer.pull();
 // Or pull data from a specific sheet
 await syncer.pull({
   sheetName: 'Sheet1',
-  translationDir: './custom-dir'
+  translationDir: './custom-dir',
 });
 
 // Push language files to Google Sheets
 await syncer.push({
-  sheetName: 'Sheet1'
+  sheetName: 'Sheet1',
 });
 ```
 
