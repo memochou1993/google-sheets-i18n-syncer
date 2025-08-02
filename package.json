@@ -1,9 +1,15 @@
 {
-  "name": "google-sheets-i18n-syncer",
+  "name": "@memochou1993/google-sheets-i18n-syncer",
   "version": "1.0.0",
   "description": "A CLI tool to fetch and sync translations from Google Sheets",
   "main": "lib/index.js",
   "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./GoogleSheetsClient": "./lib/GoogleSheetsClient.js",
+    "./I18nSyncer": "./lib/I18nSyncer.js",
+    "./formatHandlers": "./lib/formatHandlers/index.js"
+  },
   "bin": {
     "i18n-syncer": "./bin/i18n-syncer.js"
   },
