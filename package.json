@@ -33,10 +33,13 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^14.0.0",
-    "dotenv": "^17.2.1",
     "googleapis": "^154.0.0"
   },
+  "peerDependencies": {
+    "dotenv": "^17.0.0"
+  },
   "devDependencies": {
+    "dotenv": "^17.2.1",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.32.0",
     "eslint": "^9.32.0",
