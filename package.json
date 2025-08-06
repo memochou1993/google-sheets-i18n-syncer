@@ -18,7 +18,9 @@
     "lib/"
   ],
   "scripts": {
-    "cli": "node bin/i18n-syncer.js",
+    "i18n": "node bin/i18n-syncer.js",
+    "i18n:pull": "node bin/i18n-syncer.js pull",
+    "i18n:push": "node bin/i18n-syncer.js push",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
