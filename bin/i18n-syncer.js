@@ -93,6 +93,7 @@ program
   .option('-c, --credentials <path>', 'Path to credentials file', process.env.I18N_SYNCER_CREDENTIALS_PATH || './credentials.json')
   .option('-t, --translation-dir <directory>', 'Directory for translation JSON files', process.env.I18N_SYNCER_TRANSLATION_DIR || './translations')
   .option('-f, --format <format>', 'Format of translation files to read (json or js)', process.env.I18N_SYNCER_FORMAT || 'json')
+  .option('-m, --main-language <language>', 'Main language to use as base for key ordering', process.env.I18N_SYNCER_MAIN_LANGUAGE || 'en')
   .action(async (options) => {
     try {
       // Check if spreadsheet ID is provided either as option or environment variable
@@ -109,6 +110,7 @@ program
         sheetName: options.sheetName,
         translationDir: options.translationDir,
         format: options.format,
+        mainLanguage: options.mainLanguage,
       });
 
     } catch (error) {

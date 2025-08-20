@@ -76,6 +76,9 @@ npx i18n-syncer push --spreadsheet-id YOUR_SPREADSHEET_ID --translation-dir ./tr
 
 # Specify format (json or js)
 npx i18n-syncer pull --spreadsheet-id YOUR_SPREADSHEET_ID --format js
+
+# Specify main language for key ordering when pushing
+npx i18n-syncer push --spreadsheet-id YOUR_SPREADSHEET_ID --format js --main-language en
 ```
 
 Or add to your package.json scripts:
@@ -115,6 +118,12 @@ await syncer.pull({
 await syncer.push({
   sheetName: 'Sheet1',
 });
+
+// Push with specific main language for key ordering
+await syncer.push({
+  sheetName: 'Sheet1',
+  mainLanguage: 'en',
+});
 ```
 
 ## API Documentation
@@ -131,8 +140,9 @@ The main class for syncing translation data with Google Sheets.
 
 #### Methods
 
-- `pull({ translationDir, sheetName })`: Pulls data from Google Sheets and saves as language-specific JSON files
-- `push({ translationDir, sheetName })`: Pushes language files back to Google Sheets
+- `pull({ translationDir, sheetName, format })`: Pulls data from Google Sheets and saves as language-specific files
+- `push({ translationDir, sheetName, format, mainLanguage })`: Pushes language files back to Google Sheets
+  - `mainLanguage`: Specifies which language file to use as the base for key ordering (default: 'en')
 
 ### GoogleSheetsClient
 
