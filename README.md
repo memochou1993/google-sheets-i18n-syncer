@@ -7,7 +7,7 @@ A command-line tool for syncing translation data from Google Sheets.
 Install the package as a project dependency:
 
 ```bash
-npm install google-sheets-i18n-syncer
+npm i @memochou1993/google-sheets-i18n-syncer
 ```
 
 After installation, you can use the CLI tool through npm scripts or via npx.
