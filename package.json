@@ -22,7 +22,8 @@
     "i18n:pull": "node bin/i18n-syncer.js pull",
     "i18n:push": "node bin/i18n-syncer.js push",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "release": "npm run lint && npm publish --access public"
   },
   "keywords": [
     "i18n",
